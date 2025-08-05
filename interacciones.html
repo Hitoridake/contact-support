@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interacciones - Contact Support</title>
+  <link rel="icon" type="image/x-icon" href="/dist/img/logo-sena.png" />
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+  <link rel="stylesheet" href="dist/css/adminlte.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="dashboard.html" class="brand-link">
+        <img src="dist/img/logo-sena.png" alt="Logo" class="brand-image img-circle" style="opacity: 0.8" />
+        <span class="brand-text font-weight-light" style="font-size: 0.85rem;">Contact Support</span>
+      </a>
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">Johan Perez</a>
+          </div>
+        </div>
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+            <li class="nav-item"><a href="dashboard.html" class="nav-link"><i class="nav-icon fas fa-home"></i><p>Dashboard</p></a></li>
+            <li class="nav-item"><a href="clientes.html" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Clientes</p></a></li>
+            <li class="nav-item"><a href="agentes.html" class="nav-link"><i class="nav-icon fas fa-headset"></i><p>Agentes</p></a></li>
+            <li class="nav-item"><a href="interacciones.html" class="nav-link active"><i class="nav-icon fas fa-comments"></i><p>Interacciones</p></a></li>
+            <li class="nav-item"><a href="bitacoras.html" class="nav-link"><i class="nav-icon fas fa-book"></i><p>Bitácoras</p></a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <h1 class="m-0">Gestión de Interacciones</h1>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+
+              <!-- Formulario -->
+              <form id="form_interaccion">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Fecha</label>
+                    <input type="date" class="form-control" id="fecha"  required />
+                  </div>
+                  <div class="col-md-3">
+                    <label>Cliente</label>
+                    <select class="form-control" id="id_cliente" required>
+                      <option value="" disabled selected>Seleccione un cliente</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Agente</label>
+                    <select class="form-control" id="id_agente" required>
+                      <option value="" disabled selected>Seleccione un agente</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label>Descripción</label>
+                    <textarea class="form-control" id="descripcion_inicial" name="descripcion_inicial" rows="4" placeholder="Escriba aquí la descripcion de la interacción..."></textarea>
+                  </div>
+                </div>
+                <div class="row mt-3 mb-4">
+                  <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-outline-success">Guardar</button>
+                    <button type="reset" class="btn btn-outline-danger ml-2">Limpiar</button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Tabla -->
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Agente</th>
+                    <th>Descripción</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal editar -->
+    <div class="modal fade" id="modalEditarInteraccion" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <form id="form_editar_interaccion">
+            <div class="modal-header bg-warning">
+              <h5 class="modal-title">Editar Interacción</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="editar_id" />
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label>Fecha</label>
+                  <input type="date" class="form-control" id="editar_fecha" required />
+                </div>
+                <div class="form-group col-md-3">
+                  <label>Cliente</label>
+                  <select class="form-control" id="editar_cliente" required></select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label>Agente</label>
+                  <select class="form-control" id="editar_agente" required></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Descripción</label>
+                <textarea class="form-control" id="editar_descripcion_inicial" rows="4" placeholder="Editar descripción de la interacción..."></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-inline">Sistema de Validación</div>
+      <strong>© 2025 <a href="#">Tu Empresa</a>.</strong> Todos los derechos reservados.
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/js/adminlte.min.js"></script>
+
+  <script>
+    function cargarSelectClientes() {
+      $.get("clientes/read.php", function (data) {
+        const select1 = $("#id_cliente");
+        const select2 = $("#editar_cliente");
+        select1.empty();
+        select2.empty();
+
+        // Re-add placeholder
+        select1.append(`<option value="" disabled selected>Seleccione un cliente</option>`);
+        select2.append(`<option value="" disabled selected>Seleccione un cliente</option>`);
+
+        data.forEach(c => {
+          const option = `<option value="${c.ID_Cliente}">${c.Nombre}</option>`;
+          select1.append(option);
+          select2.append(option);
+        });
+      });
+    }
+
+    function cargarSelectAgentes() {
+      $.get("agentes/read.php", function (data) {
+        const select1 = $("#id_agente");
+        const select2 = $("#editar_agente");
+        select1.empty();
+        select2.empty();
+        // Re-add placeholder
+        select1.append(`<option value="" disabled selected>Seleccione un agente</option>`);
+        select2.append(`<option value="" disabled selected>Seleccione un agente</option>`);
+
+        data.forEach(a => {
+          const option = `<option value="${a.ID_Agente}">${a.Nombre}</option>`;
+          select1.append(option);
+          select2.append(option);
+        });
+      });
+    }
+
+    function cargarInteracciones() {
+      $.get("interacciones/read.php", function (data) {
+        const tbody = $("table tbody");
+        tbody.empty();
+        data.forEach(i => {
+          tbody.append(`
+            <tr>
+              <td>${i.ID_Interaccion}</td>
+              <td>${i.Fecha}</td>
+              <td>${i.Cliente}</td>
+              <td>${i.Agente}</td>
+              <td>${i.Descripcion_Inicial}</td>
+              <td><button class="btn btn-warning btn-sm" onclick='editar(${JSON.stringify(i)})'>Editar</button></td>
+              <td><button class="btn btn-danger btn-sm" onclick='eliminar(${i.ID_Interaccion})'>Eliminar</button></td>
+            </tr>
+          `);
+        });
+      }, "json");
+    }
+
+    function editar(i) {
+      $("#editar_id").val(i.ID_Interaccion);
+      $("#editar_fecha").val(i.Fecha);
+      $("#editar_descripcion_inicial").val(i.Descripcion_Inicial);
+      $("#editar_cliente").val(i.ID_Cliente);
+      $("#editar_agente").val(i.ID_Agente);
+      $("#modalEditarInteraccion").modal("show");
+    }
+
+    function eliminar(id) {
+      if (!confirm("¿Eliminar esta interacción?")) return;
+      $.post("interacciones/delete.php", { id }, cargarInteracciones);
+    }
+
+    $(document).ready(function () {
+      cargarSelectClientes();
+      cargarSelectAgentes();
+      cargarInteracciones();
+
+      $("#form_interaccion").on("submit", function (e) {
+        e.preventDefault();
+        const interaccion = {
+          fecha_creacion: $("#fecha").val(),
+          descripcion_inicial: $("#descripcion_inicial").val(),
+          id_cliente: $("#id_cliente").val(),
+          id_agente: $("#id_agente").val()
+        };
+        $.post("interacciones/create.php", interaccion, function () {
+          $("#form_interaccion")[0].reset();
+          cargarInteracciones();
+        });
+      });
+
+      $("#form_editar_interaccion").on("submit", function (e) {
+        e.preventDefault();
+        const interaccion = {
+          id: $("#editar_id").val(),
+          fecha_creacion: $("#editar_fecha").val(),
+          descripcion_inicial: $("#editar_descripcion_inicial").val(),
+          id_cliente: $("#editar_cliente").val(),
+          id_agente: $("#editar_agente").val()
+        };
+        $.post("interacciones/update.php", interaccion, function () {
+          $("#modalEditarInteraccion").modal("hide");
+          cargarInteracciones();
+        });
+      });
+    });
+
+    
+  </script>
+
+</body>
+</html>

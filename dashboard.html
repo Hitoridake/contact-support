@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Contact Validation Support</title>
+  <link rel="icon" type="image/x-icon" href="/dist/img/logo-sena.png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+  <link rel="stylesheet" href="dist/css/adminlte.min.css" />
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <!-- Keep your original navbar content here -->
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="dashboard.html" class="brand-link">
+        <img src="dist/img/logo-sena.png" alt="Logo" class="brand-image img-circle" style="opacity: 0.8" />
+        <span class="brand-text font-weight-light" style="font-size: 0.85rem;">Contact Support</span>
+      </a>
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">Johan Perez</a>
+          </div>
+        </div>
+
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+            <li class="nav-item"><a href="dashboard.html" class="nav-link active"><i class="nav-icon fas fa-home"></i><p>Dashboard</p></a></li>
+            <li class="nav-item"><a href="clientes.html" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Clientes</p></a></li>
+            <li class="nav-item"><a href="agentes.html" class="nav-link"><i class="nav-icon fas fa-headset"></i><p>Agentes</p></a></li>
+            <li class="nav-item"><a href="interacciones.html" class="nav-link"><i class="nav-icon fas fa-comments"></i><p>Interacciones</p></a></li>
+            <li class="nav-item"><a href="bitacoras.html" class="nav-link"><i class="nav-icon fas fa-book"></i><p>Bitácoras</p></a></li>
+            <!--li class="nav-item"><a href="plataformas.html" class="nav-link"><i class="nav-icon fas fa-server"></i><p>Plataformas</p></a></li>
+            <li class="nav-item"><a href="graficos.html" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i><p>Gráficos</p></a></li-->
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Dashboard</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item active">Inicio</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard content -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Clientes -->
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3 id="count_clientes">...</h3>
+                  <p>Clientes</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <a href="clientes.html" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+            <!-- Agentes -->
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3 id="count_agentes">...</h3>
+                  <p>Agentes</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-headset"></i>
+                </div>
+                <a href="agentes.html" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+            <!-- Interacciones -->
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3 id="count_interacciones">...</h3>
+                  <p>Interacciones</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <a href="interacciones.html" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+            <!-- Bitácoras -->
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3 id="count_bitacoras">...</h3>
+                  <p>Bitácoras</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-book"></i>
+                </div>
+                <a href="bitacoras.html" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+            <!-- Gráficos-->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Interacciones por mes -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Interacciones por mes</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="grafico1" style="
+                                            min-height: 250px;
+                                            height: 250px;
+                                            max-height: 250px;
+                                            max-width: 100%;
+                                            ">
+                                        </canvas>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Bitácoras por agente -->
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">Bitácoras por agente</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="grafico2"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+                        </div>
+                        <!-- /.col (RIGHT) -->
+                    </div>
+                </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-inline">Sistema de Soporte</div>
+      <strong>© 2025 <a href="#">Tu Empresa</a>.</strong> Todos los derechos reservados.
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/js/adminlte.min.js"></script>
+  <script src="plugins/chart.js/Chart.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
+    <script>
+        $(function () {           
+          // Line Chart: Interacciones por mes
+          $.getJSON("dashboard/charts/interacciones_por_mes.php", function (response) {
+            const ctx = $("#grafico1").get(0).getContext("2d");
+            const lineChart = new Chart(ctx, {
+              type: "line",
+              data: {
+                labels: response.labels,
+                datasets: [{
+                  label: "Interacciones",
+                  data: response.data,
+                  backgroundColor: "rgba(60,141,188,0.2)",
+                  borderColor: "rgba(60,141,188,1)",
+                  pointRadius: 5,
+                  pointHoverRadius: 7,
+                  fill: true
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    ticks: {
+                      stepSize: 1
+                    }
+                  }
+                }
+              }
+            });
+          });
+
+          // Pie Chart: Bitácoras por agente
+          $.getJSON("dashboard/charts/bitacoras_por_agente.php", function (response) {
+            const ctx = $("#grafico2").get(0).getContext("2d");
+            const pieChart = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                labels: response.labels,
+                datasets: [{
+                  data: response.data,
+                  backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false
+              }
+            });
+          });
+        });
+      </script>
+
+    <script>
+      $(document).ready(function () {
+        $.get("dashboard/stats.php", function (data) {
+          $("#count_clientes").text(data.clientes);
+          $("#count_agentes").text(data.agentes);
+          $("#count_interacciones").text(data.interacciones);
+          $("#count_bitacoras").text(data.bitacoras);
+        }).fail(function () {
+          console.error("❌ Failed to load dashboard stats");
+        });
+      });
+
+      function cargarContadores() {
+        $.getJSON("dashboard/charts/clientes.php", function (data) {
+          $(".small-box.bg-info h3").text(data.total);
+        });
+
+        $.getJSON("dashboard/charts/agentes.php", function (data) {
+          $(".small-box.bg-success h3").text(data.total);
+        });
+
+        $.getJSON("dashboard/charts/interacciones.php", function (data) {
+          $(".small-box.bg-warning h3").text(data.total);
+        });
+
+        $.getJSON("dashboard/charts/bitacoras.php", function (data) {
+          $(".small-box.bg-danger h3").text(data.total);
+        });
+      }
+
+    </script>
+</body>
+
+</html>
